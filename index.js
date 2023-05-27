@@ -7,7 +7,10 @@ app.get("/", (req,res)=>{
     res.send("Bem vindo!!!")
 })
 
-
+app.get("/user/:name", (req,res)=>{
+    let username = req.params.name
+    res.send(`Seja bem vindo ${username}`)
+})
 
 app.listen(5000, (err)=>{
     if(err){
