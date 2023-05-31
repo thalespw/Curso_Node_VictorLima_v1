@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
 const connection = require("./database/database")
-// const questionModel = require("./database/Question")
+const Question = require("./database/Question")
 
 //DB Connection
 connection.authenticate()
@@ -35,7 +35,12 @@ app.get("/question", (req,res) => {
 app.post("/savequestion", (req,res) => {
     let title = req.body.title
     let description = req.body.description
-    res.send("Title: " + title + " " + "Description: " + description)
+    Question.create({
+        title: title,
+        description: description
+    }).then(() => {
+        res.redirect("/")
+    })
 })
 
 

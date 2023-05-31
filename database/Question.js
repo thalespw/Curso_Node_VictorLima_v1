@@ -1,17 +1,20 @@
-const Sequelize = requeire("sequelize")
+const { DataTypes } = require("sequelize")
 const connection = require("./database")
 
 //Create Table Structure
 
 const Question = connection.define('question',{
     title: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     description: {
-        type: Sequelize.TEXT,
+        type: DataTypes.TEXT,
         allowNull: false
     }
 })
              //force: false: Means that if table already exist, it will not be created again
-Question.sync({force: false}).then(() => {})
+Question.sync({force: false})
+
+
+module.exports = Question
