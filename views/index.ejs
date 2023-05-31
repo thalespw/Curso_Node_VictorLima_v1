@@ -2,5 +2,29 @@
 
 <body>
     <%- include('partials/navbar') %>
-    <h1>Home Page</h1>
+    
+    <div class="container">
+        <br>
+        <h2>Questions</h2>
+        <hr>
+
+        <% questions.forEach(question => { %>
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <h4><%= question.title %></h4>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-dark">answer</button>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        <% }) %>
+    
+    </div>
 </body>

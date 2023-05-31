@@ -25,7 +25,12 @@ app.use(bodyParser.json())
 
 //Rotes
 app.get("/", (req,res) => {
-    res.render("index")   
+    Question.findAll( {raw: true } ) //method to show all posts from table
+    .then(questionslist => {
+        res.render("index", {
+            questions: questionslist
+        })
+    })  
 })
 
 app.get("/question", (req,res) => {
