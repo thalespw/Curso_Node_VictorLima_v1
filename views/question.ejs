@@ -1,30 +1,28 @@
-
 <%- include('partials/header') %>
 
 <body>
-
     <%- include('partials/navbar') %>
-
+    
     <div class="container">
-        <div class="card" id="form-question">
+
+        <br>
+        <div class="card">
             <div class="card-header">
-                <h3>Ask your Questions</h3>
+                <h3><%= question.title %></h3>
             </div>
             <div class="card-body">
-                <form action="/savequestion" method="POST">
-                    <label for="">Title</label>
-                    <input type="text" placeholder="" class="form-control" name="title">
-                    <br>
-                    <label for="">Description</label>
-                    <textarea id="" cols="30" rows="10" placeholder="Description"class="form-control" name="description"></textarea>  
-                    <br> 
-                    <button class="btn btn-dark"
-                         style="--bs-btn-padding-y: 0.55rem; --bs-btn-padding-x: 2.5rem; --bs-btn-font-size: 1rem;">
-                        Send
-                    </button>    
-                </form>
+                <p><%= question.description %></p>         
             </div>
-        </div>     
+             
+        </div> 
+        <br>    
+        <button class="btn btn-dark" style="--bs-btn-padding-y: 0.55rem; --bs-btn-padding-x: 2.5rem; --bs-btn-font-size: 1rem;">
+            Send
+        </button>  
+
     </div>
+
+
+
+
 </body>
-</html>

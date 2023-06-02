@@ -25,7 +25,10 @@ app.use(bodyParser.json())
 
 //Rotes
 app.get("/", (req,res) => {
-    Question.findAll( {raw: true } ) //method to show all posts from table
+           //findAll: method to show all posts from table
+    Question.findAll( {raw: true, order: [
+        ['id', 'DESC']  //order list for id in descending. To ascending order: ['id', 'ASC']
+    ] } ) 
     .then(questionslist => {
         res.render("index", {
             questions: questionslist
@@ -33,8 +36,8 @@ app.get("/", (req,res) => {
     })  
 })
 
-app.get("/question", (req,res) => {
-    res.render("question")
+app.get("/ask", (req,res) => {
+    res.render("ask")
 })
 
 app.post("/savequestion", (req,res) => {
@@ -45,6 +48,22 @@ app.post("/savequestion", (req,res) => {
         description: description
     }).then(() => {
         res.redirect("/")
+    })
+})
+
+
+app.get("/question/:id", (req,res) => {
+    let id = req.params.id    //this var ID catch the question/:id
+    Question.findOne({
+        where: {id: id}
+    }).then(question => {
+        if(question != undefined){
+            res.render("question",{
+                question: question
+            })
+        }else {
+            res.redirect("/")
+        }
     })
 })
 
